@@ -9,9 +9,24 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/arvindmahat/js-e2e-express-server.git'
             }
         }
-        stage('Build') {
+        stage('Dependencies') {
             steps {
                 sh 'npm install'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run pack'
+            }
+        }
+        stage('Test results') {
+            steps {
+                sh 'npm test'
             }
         }
         stage('Sonar Analysis') {
@@ -51,3 +66,4 @@ pipeline {
         }
     }
 }
+              
