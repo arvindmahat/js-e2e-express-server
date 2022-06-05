@@ -1,8 +1,5 @@
 pipeline {
     agent { label 'build_java_11' }
-    triggers {
-        cron('0 * * * *')
-    }
     stages {
         stage('SourceCode') {
             steps {
